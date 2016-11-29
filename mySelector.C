@@ -433,30 +433,30 @@ Bool_t mySelector::Process(Long64_t entry)
 
     // Turn on leptonic flag
     if (truth_W0_leptonic == 1) {
-	if (truth_l_pdgId == 11 || truth_l_pdgId == -11) {
-	    // SetPtEtaPhiM should use mass in MeV/c^2, but truth information are saved in unit GeV/c^2
-	    // e mass = 0.511 MeV/c^2 = 0.000511 GeV/c^2
-	    truth_electron_LepFlagOn.SetPtEtaPhiM(truth_l_pt, truth_l_eta, truth_l_phi, 0.000511);
-	    truth_electronNeutrino_LepFlagOn.SetPtEtaPhiM(truth_nu_pt, truth_nu_eta, truth_nu_phi, 0.0);
-	    truth_lepton_LepFlagOn.SetPtEtaPhiM(truth_l_pt, truth_l_eta, truth_l_phi, 0.000511);
+        if (truth_l_pdgId == 11 || truth_l_pdgId == -11) {
+            // SetPtEtaPhiM should use mass in MeV/c^2, but truth information are saved in unit GeV/c^2
+            // e mass = 0.511 MeV/c^2 = 0.000511 GeV/c^2
+            truth_electron_LepFlagOn.SetPtEtaPhiM(truth_l_pt, truth_l_eta, truth_l_phi, 0.000511);
+            truth_electronNeutrino_LepFlagOn.SetPtEtaPhiM(truth_nu_pt, truth_nu_eta, truth_nu_phi, 0.0);
+            truth_lepton_LepFlagOn.SetPtEtaPhiM(truth_l_pt, truth_l_eta, truth_l_phi, 0.000511);
 
-	    leptonic_count++;
-	    leptonic_count_e++;
-	}
-	if (truth_l_pdgId == 13 || truth_l_pdgId == -13) {
-	    // muon mass = 105.658 MeV/c^2 = 0.105658 GeV/c^2
-	    truth_muon_LepFlagOn.SetPtEtaPhiM(truth_l_pt, truth_l_eta, truth_l_phi, 0.105658);
-	    truth_muonNeutrino_LepFlagOn.SetPtEtaPhiM(truth_nu_pt, truth_nu_eta, truth_nu_phi, 0.0);
-	    truth_lepton_LepFlagOn.SetPtEtaPhiM(truth_l_pt, truth_l_eta, truth_l_phi, 0.105658);
+            leptonic_count++;
+            leptonic_count_e++;
+        }
+        if (truth_l_pdgId == 13 || truth_l_pdgId == -13) {
+            // muon mass = 105.658 MeV/c^2 = 0.105658 GeV/c^2
+            truth_muon_LepFlagOn.SetPtEtaPhiM(truth_l_pt, truth_l_eta, truth_l_phi, 0.105658);
+            truth_muonNeutrino_LepFlagOn.SetPtEtaPhiM(truth_nu_pt, truth_nu_eta, truth_nu_phi, 0.0);
+            truth_lepton_LepFlagOn.SetPtEtaPhiM(truth_l_pt, truth_l_eta, truth_l_phi, 0.105658);
 
-	    leptonic_count++;
-	    leptonic_count_mu++;
-	}
-	truth_neutrino_LepFlagOn.SetPtEtaPhiM(truth_nu_pt, truth_nu_eta, truth_nu_phi, 0.0);
-	truth_W0_LepFlagOn.SetPtEtaPhiM(truth_W0_pt, truth_W0_eta, truth_W0_phi, truth_W0_m);
-	truth_electron_and_electronNeutrino_LepFlagOn = truth_electron_LepFlagOn + truth_electronNeutrino_LepFlagOn;
-	truth_muon_and_muonNeutrino_LepFlagOn = truth_muon_LepFlagOn + truth_muonNeutrino_LepFlagOn;
-	truth_lepton_and_neutrino_LepFlagOn = truth_lepton_LepFlagOn + truth_neutrino_LepFlagOn;
+            leptonic_count++;
+            leptonic_count_mu++;
+        }
+        truth_neutrino_LepFlagOn.SetPtEtaPhiM(truth_nu_pt, truth_nu_eta, truth_nu_phi, 0.0);
+        truth_W0_LepFlagOn.SetPtEtaPhiM(truth_W0_pt, truth_W0_eta, truth_W0_phi, truth_W0_m);
+        truth_electron_and_electronNeutrino_LepFlagOn = truth_electron_LepFlagOn + truth_electronNeutrino_LepFlagOn;
+        truth_muon_and_muonNeutrino_LepFlagOn = truth_muon_LepFlagOn + truth_muonNeutrino_LepFlagOn;
+        truth_lepton_and_neutrino_LepFlagOn = truth_lepton_LepFlagOn + truth_neutrino_LepFlagOn;
     }
 
     myTree->Fill();
